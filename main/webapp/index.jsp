@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 </head>
 <body>
 <!-- Header -->
@@ -65,11 +67,11 @@
                     <div class="mb-4">
                         <label class="form-label">Color</label>
                         <select class="form-select sofa-color">
-                            <option value="#795548">White</option>
-                            <option value="#263238">Black</option>
-                            <option value="#cfd8dc">Beige</option>
-                            <option value="#cfd8dc">Chocolate</option>
-                            <option value="#e0e0e0">Light Gray</option>
+                            <option value="#EBE9DD">COCONUT MILK</option>
+                            <option value="#EIDACA">CHALK BEIGE</option>
+                            <option value="#A8A696">SAGE</option>
+                            <option value="#766B5D">TAUPE BROWN</option>
+                            <option value="##162A2">MIDNIGHT</option>
                         </select>
                     </div>
                     <div class="mb-4">
@@ -111,11 +113,11 @@
                     <div class="mb-4">
                         <label class="form-label">Color</label>
                         <select class="form-select table-color">
-                            <option value="#795548">White</option>
-                            <option value="#263238">Black</option>
-                            <option value="#cfd8dc">Beige</option>
-                            <option value="#cfd8dc">Chocolate</option>
-                            <option value="#e0e0e0">Light Gray</option>
+                            <option value="#EBE9DD">COCONUT MILK</option>
+                            <option value="#EIDACA">CHALK BEIGE</option>
+                            <option value="#A8A696">SAGE</option>
+                            <option value="#766B5D">TAUPE BROWN</option>
+                            <option value="##162A2">MIDNIGHT</option>
                         </select>
                     </div>
                     <div class="mb-4">
@@ -149,11 +151,11 @@
                     <div class="mb-4">
                         <label class="form-label">Color</label>
                         <select class="form-select chair-color">
-                            <option value="#795548">White</option>
-                            <option value="#263238">Black</option>
-                            <option value="#cfd8dc">Beige</option>
-                            <option value="#cfd8dc">Chocolate</option>
-                            <option value="#e0e0e0">Light Gray</option>
+                            <option value="#EBE9DD">COCONUT MILK</option>
+                            <option value="#EIDACA">CHALK BEIGE</option>
+                            <option value="#A8A696">SAGE</option>
+                            <option value="#766B5D">TAUPE BROWN</option>
+                            <option value="##162A2">MIDNIGHT</option>
                         </select>
                     </div>
                     <div class="mb-4">
