@@ -16,6 +16,117 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize event listeners
     initEventListeners();
 
+    // Initialize range values
+    updateRangeValues();
+
+    // Load cart from localStorage
+    loadCart();
+});
+
+// Initialize event listeners
+function initEventListeners() {
+    // Range inputs
+    document.querySelectorAll('.sofa-length').forEach(el => {
+        el.addEventListener('input', function() {
+            document.getElementById('sofaLengthValue').textContent = this.value;
+        });
+    });
+
+    document.querySelectorAll('.table-height').forEach(el => {
+        el.addEventListener('input', function() {
+            document.getElementById('tableHeightValue').textContent = this.value;
+        });
+    });
+
+    document.querySelectorAll('.chair-height').forEach(el => {
+        el.addEventListener('input', function() {
+            document.getElementById('chairHeightValue').textContent = this.value;
+        });
+    });
+
+    // Add to cart buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const product = this.getAttribute('data-product');
+            addToCart(product);
+        });
+    });
+
+    // Cart button
+    document.getElementById('cartButton').addEventListener('click', showCartModal);
+}
+
+// Update range value displays
+function updateRangeValues() {
+    document.getElementById('sofaLengthValue').textContent =
+        document.querySelector('.sofa-length').value;
+
+    document.getElementById('tableHeightValue').textContent =
+        document.querySelector('.table-height').value;
+
+    document.getElementById('chairHeightValue').textContent =
+        document.querySelector('.chair-height').value;
+}
+
+// Cart functions
+function addToCart(product) {
+    // Get current customization options
+    let customization = {
+        color: document.querySelector(`#${product}Color`).value,
+        colorName: colorNames[document.querySelector(`#${product}Color`).value]
+    };
+
+    // Add material if available
+    const materialSelect = document.querySelector(`#${product}Material`);
+    if (materialSelect) {
+        customization.material = materialSelect.value;
+    }
+
+    // Add size if available
+    const sizeInput = document.querySelector(`#${product}Length`) ||
+        document.querySelector(`#${product}Height`);
+    if (sizeInput) {
+        customization.size = sizeInput.value;
+    }
+
+    // Add to cart
+    cart.items.push({
+        product,
+        customization,
+        price: prices[product]
+    });
+
+    // Update total
+    updateCartTotal();
+
+    // Save to localStorage
+    saveCart();
+
+    // Update UI
+    updateCartCount();
+
+    // Show feedback
+    showToast(`${productName(product)} added to cart!`);
+}
+
+// Rest of your existing main.js code...// Cart state
+let cart = {
+    items: [],
+    total: 0
+};
+
+// Prices
+const prices = {
+    'sofa': 599,
+    'coffee-table': 299,
+    'chair': 199
+};
+
+// DOM Ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize event listeners
+    initEventListeners();
+
     // Update range value displays
     updateRangeValues();
 

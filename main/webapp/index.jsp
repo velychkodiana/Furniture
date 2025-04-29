@@ -6,20 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniture Store - Customize Your Home</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
 </head>
 <body>
 <!-- Header -->
 <header class="fixed-top bg-white shadow-sm">
     <div class="container py-3">
-        <div class="d-flex justify-content-between align-items-center comfortaa-font" >
+        <div class="d-flex justify-content-between align-items-center comfortaa-font">
             <h1 class="h3 mb-0 d-flex align-items-center">
                 <img src="assets/icon/chair.png" alt="logo" class="sofa-logo">
                 Furniture Store
@@ -52,7 +50,16 @@
                     <a href="#sofa" class="btn btn-primary btn-lg">Start Designing</a>
                 </div>
                 <div class="col-lg-6">
-                    <div id="heroModel" class="model-container"></div>
+                    <model-viewer
+                            src="assets/models/room.glb"
+                            alt="Modern Furniture Showroom"
+                            auto-rotate
+                            camera-controls
+                            exposure="1.0"
+                            environment-image="neutral"
+                            shadow-intensity="1"
+                            style="width:100%; height:500px; border-radius:15px; overflow:hidden;">
+                    </model-viewer>
                 </div>
             </div>
         </div>
@@ -66,31 +73,39 @@
                     <h2 class="fw-bold mb-4">Custom Sofa</h2>
                     <div class="mb-4">
                         <label class="form-label">Color</label>
-                        <select class="form-select sofa-color">
+                        <select class="form-select sofa-color" id="sofaColor">
                             <option value="#EBE9DD">COCONUT MILK</option>
-                            <option value="#EIDACA">CHALK BEIGE</option>
+                            <option value="#E1DACA">CHALK BEIGE</option>
                             <option value="#A8A696">SAGE</option>
                             <option value="#766B5D">TAUPE BROWN</option>
-                            <option value="##162A2">MIDNIGHT</option>
+                            <option value="#162A2C">MIDNIGHT</option>
                         </select>
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Fabric</label>
-                        <select class="form-select sofa-fabric">
-                            <option value="fabric1">Leather</option>
-                            <option value="fabric2">Linen</option>
-                            <option value="fabric3">Boucle</option>
+                        <select class="form-select sofa-fabric" id="sofaMaterial">
+                            <option value="linen">Linen</option>
+                            <option value="leather">Leather</option>
+                            <option value="velvet">Velvet</option>
                         </select>
                     </div>
-                    <div class="mb-4">
+                   <!-- <div class="mb-4">
                         <label class="form-label">Length</label>
-                        <input type="range" class="form-range sofa-length" min="120" max="200" value="160">
+                        <input type="range" class="form-range sofa-length" min="120" max="200" value="160" id="sofaLength">
                         <div class="text-muted"><span id="sofaLengthValue">160</span> cm</div>
-                    </div>
+                    </div>-->
                     <button class="btn btn-primary add-to-cart" data-product="sofa">Add to Cart</button>
                 </div>
                 <div class="col-lg-6">
-                    <div id="sofaModel" class="model-container"></div>
+                    <model-viewer
+                            src="assets/models/sofa.glb"
+                            id="sofaModel"
+                            auto-rotate
+                            camera-controls
+                            exposure="1.0"
+                            environment-image="neutral"
+                            style="width:100%; height:500px; border-radius:15px; overflow:hidden;">
+                    </model-viewer>
                 </div>
             </div>
         </div>
@@ -104,7 +119,7 @@
                     <h2 class="fw-bold mb-4">Custom Coffee Table</h2>
                     <div class="mb-4">
                         <label class="form-label">Material</label>
-                        <select class="form-select table-material">
+                        <select class="form-select table-material" id="tableMaterial">
                             <option value="wood">Wood</option>
                             <option value="glass">Glass</option>
                             <option value="metal">Metal</option>
@@ -112,67 +127,83 @@
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Color</label>
-                        <select class="form-select table-color">
+                        <select class="form-select table-color" id="tableColor">
                             <option value="#EBE9DD">COCONUT MILK</option>
-                            <option value="#EIDACA">CHALK BEIGE</option>
+                            <option value="#E1DACA">CHALK BEIGE</option>
                             <option value="#A8A696">SAGE</option>
                             <option value="#766B5D">TAUPE BROWN</option>
-                            <option value="##162A2">MIDNIGHT</option>
+                            <option value="#162A2C">MIDNIGHT</option>
                         </select>
                     </div>
-                    <div class="mb-4">
-                        <label class="form-label">Height</label>
-                        <input type="range" class="form-range table-height" min="30" max="60" value="45">
-                        <div class="text-muted"><span id="tableHeightValue">45</span> cm</div>
-                    </div>
-                    <button class="btn btn-primary add-to-cart" data-product="coffee-table">Add to Cart</button>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div id="tableModel" class="model-container"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!--  <div class="mb-4">
+                         <label class="form-label">Height</label>
+                         <input type="range" class="form-range table-height" min="30" max="60" value="45" id="tableHeight">
+                         <div class="text-muted"><span id="tableHeightValue">45</span> cm</div>
+                     </div>-->
+                     <button class="btn btn-primary add-to-cart" data-product="coffee-table">Add to Cart</button>
+                 </div>
+                 <div class="col-lg-6 order-lg-1">
+                     <model-viewer
+                             src="assets/models/table.glb"
+                             id="tableModel"
+                             auto-rotate
+                             camera-controls
+                             exposure="1.0"
+                             environment-image="neutral"
+                             style="width:100%; height:500px; border-radius:15px; overflow:hidden;">
+                     </model-viewer>
+                 </div>
+             </div>
+         </div>
+     </section>
 
-    <!-- Chair Section -->
+     <!-- Chair Section -->
     <section id="chair" class="vh-100 d-flex align-items-center bg-white">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h2 class="fw-bold mb-4">Custom Chair</h2>
                     <div class="mb-4">
-                        <!--  <label class="form-label">Style</label>
-                         <select class="form-select chair-style">
-                             <option value="modern">Modern</option>
-                             <option value="classic">Classic</option>
-                             <option value="industrial">Industrial</option>
-                         </select>-->
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label">Color</label>
-                        <select class="form-select chair-color">
-                            <option value="#EBE9DD">COCONUT MILK</option>
-                            <option value="#EIDACA">CHALK BEIGE</option>
-                            <option value="#A8A696">SAGE</option>
-                            <option value="#766B5D">TAUPE BROWN</option>
-                            <option value="##162A2">MIDNIGHT</option>
+                        <label class="form-label">Fabric</label>
+                        <select class="form-select sofa-fabric" id="chairMaterial">
+                            <option value="linen">Linen</option>
+                            <option value="leather">Leather</option>
+                            <option value="velvet">Velvet</option>
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label">Height</label>
-                        <input type="range" class="form-range chair-height" min="70" max="100" value="85">
-                        <div class="text-muted"><span id="chairHeightValue">85</span> cm</div>
+                        <label class="form-label">Color</label>
+                        <select class="form-select chair-color" id="chairColor">
+                            <option value="#EBE9DD">COCONUT MILK</option>
+                            <option value="#E1DACA">CHALK BEIGE</option>
+                            <option value="#A8A696">SAGE</option>
+                            <option value="#766B5D">TAUPE BROWN</option>
+                            <option value="#162A2C">MIDNIGHT</option>
+                        </select>
                     </div>
-                    <button class="btn btn-primary add-to-cart" data-product="chair">Add to Cart</button>
-                </div>
-                <div class="col-lg-6">
-                    <div id="chairModel" class="model-container"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!--    <div class="mb-4">
+                           <label class="form-label">Height</label>
+                           <input type="range" class="form-range chair-height" min="70" max="100" value="85" id="chairHeight">
+                           <div class="text-muted"><span id="chairHeightValue">85</span> cm</div>
+                       </div>-->
+                       <button class="btn btn-primary add-to-cart" data-product="chair">Add to Cart</button>
+                   </div>
+                   <div class="col-lg-6">
+                       <model-viewer
+                               src="assets/models/chair.glb"
+                               id="chairModel"
+                               auto-rotate
+                               camera-controls
+                               exposure="1.0"
+                               environment-image="neutral"
+                               style="width:100%; height:500px; border-radius:15px; overflow:hidden;">
+                       </model-viewer>
+                   </div>
+               </div>
+           </div>
+       </section>
 
-    <!-- Cart Modal -->
+       <!-- Cart Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -182,7 +213,6 @@
                 </div>
                 <div class="modal-body">
                     <div id="cartItems" class="mb-4">
-                        <!-- Cart items will be dynamically inserted here -->
                         <p class="text-muted">Your cart is empty</p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -200,7 +230,7 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-dark-subtle text-white py-5">
+<footer class="bg-dark text-white py-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 mb-4 mb-lg-0">
@@ -217,7 +247,6 @@
                 </ul>
             </div>
             <div class="col-lg-4">
-
                 <h5 class="mb-4">Contact Us</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">Email: info@dixicreated.com</li>
@@ -234,7 +263,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/three-app.js"></script>
+<script src="assets/js/material-config.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
